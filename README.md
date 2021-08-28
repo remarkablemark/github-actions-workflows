@@ -4,6 +4,7 @@
 
 - [![Cron](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cron.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cron.yml)
 - [![GitHub Actions Demo](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/github-actions-demo.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/github-actions-demo.yml)
+- [![Manually triggered workflow](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/workflow-dispatch.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/workflow-dispatch.yml)
 
 ## License
 
