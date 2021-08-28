@@ -1,0 +1,13 @@
+# https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
+name: Cron
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # This example triggers the workflow every day at 5:30 and 17:30 UTC
+    # https://crontab.cronhub.io/
+    - cron:  '30 5,17 * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - run: date
