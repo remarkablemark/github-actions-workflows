@@ -1,0 +1,98 @@
+# https://docs.github.com/en/actions/guides/creating-postgresql-service-containers
+name: PostgreSQL
+on: push
+
+jobs:
+  postgres-container:
+    runs-on: ubuntu-latest
+    container: node
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Install postgresql-client
+        run: |
+          apt-get update
+          apt-get install --yes postgresql-client
+      - name: Connect to PostgreSQL with CLI
+        run: psql -c 'SELECT VERSION();'
+        env:
+          PGHOST: postgres
+          PGUSER: postgres
+          PGDATABASE: postgres
+          PGPASSWORD: postgres
+      - name: Install pg
+        run: npm install pg
+      - name: Connect to PostgreSQL with Node.js
+        run: |
+          cat > client.js << EOF
+          const pg = require('pg');
+          const client = new pg.Client();
+          client.connect();
+          client.query('SELECT VERSION()').then((res) => {
+            console.log(res.rows[0]);
+            client.end();
+          });
+          EOF
+          node client.js
+        env:
+          PGHOST: postgres
+          PGUSER: postgres
+          PGDATABASE: postgres
+          PGPASSWORD: postgres
+
+  postgres-service:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+    steps:
+      - name: Install postgresql-client
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes postgresql-client
+      - name: Connect to PostgreSQL with CLI
+        run: psql -c 'SELECT VERSION();'
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGDATABASE: postgres
+          PGPASSWORD: postgres
+      - name: Install pg
+        run: npm install pg
+      - name: Connect to PostgreSQL with Node.js
+        run: |
+          cat > client.js << EOF
+          const pg = require('pg');
+          const client = new pg.Client();
+          client.connect();
+          client.query('SELECT VERSION()').then((res) => {
+            console.log(res.rows[0]);
+            client.end();
+          });
+          EOF
+          node client.js
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGDATABASE: postgres
+          PGPASSWORD: postgres
