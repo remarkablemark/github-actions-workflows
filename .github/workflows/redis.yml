@@ -1,0 +1,72 @@
+# https://docs.github.com/en/actions/guides/creating-redis-service-containers
+name: Redis
+on: push
+
+jobs:
+  redis-container:
+    runs-on: ubuntu-latest
+    container: node
+    services:
+      redis:
+        image: redis
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Install redis-cli
+        run: |
+          apt-get update
+          apt-get install --yes redis-tools
+      - name: Connect to Redis with CLI
+        run: redis-cli -h $REDIS_HOST INFO SERVER | grep redis_version
+        env:
+          REDIS_HOST: redis
+      - name: Install redis
+        run: npm install redis
+      - name: Connect to Redis with Node.js
+        run: |
+          cat > client.js << EOF
+          const redis = require('redis');
+          const client = redis.createClient({
+            host: process.env.REDIS_HOST,
+          });
+          client.on('ready', () => {
+            console.log(client.server_info.redis_version);
+            client.end(true);
+          });
+          EOF
+          node client.js
+        env:
+          REDIS_HOST: redis
+
+  redis-service:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis
+        # Opens tcp port 6379 on the host and service container
+        ports:
+          - 6379:6379
+    steps:
+      - name: Install redis-cli
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes redis-tools
+      - name: Connect to Redis with CLI
+        run: redis-cli INFO SERVER | grep redis_version
+      - name: Install redis
+        run: npm install redis
+      - name: Connect to Redis with Node.js
+        run: |
+          cat > client.js << EOF
+          const redis = require('redis');
+          const client = redis.createClient();
+          client.on('ready', () => {
+            console.log(client.server_info.redis_version);
+            client.end(true);
+          });
+          EOF
+          node client.js
