@@ -6,6 +6,7 @@
 - [![GitHub Actions Demo](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/github-actions-demo.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/github-actions-demo.yml)
 - [![Manually triggered workflow](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/workflow-dispatch.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/workflow-dispatch.yml)
 - [![Node.js](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/nodejs.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/nodejs.yml)
+- [![cache](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cache.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cache.yml)
 - [![commitlint](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/commitlint.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/commitlint.yml)
 
 ## License
