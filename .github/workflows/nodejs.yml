@@ -1,0 +1,34 @@
+name: Node.js
+on: push
+jobs:
+  nodejs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: node --version
+      - run: npm --version
+      - run: npx --version
+      - run: yarn --version
+
+  setup-node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+      - run: node --version
+      - run: npm --version
+      - run: npx --version
+      - run: yarn --version
+
+  setup-node-with-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output .nvmrc
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+        id: nvm
+      - name: Use Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+      - run: node --version
+      - run: npm --version
+      - run: npx --version
+      - run: yarn --version
