@@ -1,5 +1,5 @@
 # https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows#using-the-cache-action
-name: cache
+name: Cache
 on: push
 
 jobs:
