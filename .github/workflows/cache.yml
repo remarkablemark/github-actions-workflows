@@ -1,0 +1,41 @@
+# https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows#using-the-cache-action
+name: cache
+on: push
+jobs:
+  cache-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json', './package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline
+      - name: Test dependency
+        run: node -p 'require("@commitlint/config-conventional").parserPreset'
+
+  cache-yarn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock', './yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile --prefer-offline
+      - name: Test dependency
+        run: node -p 'require("@commitlint/config-conventional").parserPreset'
