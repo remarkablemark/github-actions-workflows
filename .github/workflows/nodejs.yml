@@ -21,6 +21,20 @@ jobs:
   setup-node-with-version:
     runs-on: ubuntu-latest
     steps:
+      - name: Use Node.js 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - run: node --version
+      - run: npm --version
+      - run: npx --version
+      - run: yarn --version
+
+  setup-node-with-nvmrc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Output .nvmrc
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
