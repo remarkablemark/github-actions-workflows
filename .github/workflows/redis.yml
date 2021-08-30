@@ -15,6 +15,8 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+    env:
+      REDIS_HOST: redis
     steps:
       - name: Install redis-cli
         run: |
@@ -22,8 +24,6 @@ jobs:
           apt-get install --yes redis-tools
       - name: Connect to Redis with CLI
         run: redis-cli -h $REDIS_HOST INFO SERVER | grep redis_version
-        env:
-          REDIS_HOST: redis
       - name: Install redis
         run: npm install redis
       - name: Connect to Redis with Node.js
@@ -39,8 +39,6 @@ jobs:
           });
           EOF
           node client.js
-        env:
-          REDIS_HOST: redis
 
   redis-service:
     runs-on: ubuntu-latest

@@ -17,6 +17,11 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+    env:
+      PGHOST: postgres
+      PGUSER: postgres
+      PGDATABASE: postgres
+      PGPASSWORD: postgres
     steps:
       - name: Install postgresql-client
         run: |
@@ -24,11 +29,6 @@ jobs:
           apt-get install --yes postgresql-client
       - name: Connect to PostgreSQL with CLI
         run: psql -c 'SELECT VERSION();'
-        env:
-          PGHOST: postgres
-          PGUSER: postgres
-          PGDATABASE: postgres
-          PGPASSWORD: postgres
       - name: Install pg
         run: npm install pg
       - name: Connect to PostgreSQL with Node.js
@@ -43,11 +43,6 @@ jobs:
           });
           EOF
           node client.js
-        env:
-          PGHOST: postgres
-          PGUSER: postgres
-          PGDATABASE: postgres
-          PGPASSWORD: postgres
 
   postgres-service:
     runs-on: ubuntu-latest
@@ -65,6 +60,11 @@ jobs:
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGDATABASE: postgres
+      PGPASSWORD: postgres
     steps:
       - name: Install postgresql-client
         run: |
@@ -72,11 +72,6 @@ jobs:
           sudo apt-get install --yes postgresql-client
       - name: Connect to PostgreSQL with CLI
         run: psql -c 'SELECT VERSION();'
-        env:
-          PGHOST: localhost
-          PGUSER: postgres
-          PGDATABASE: postgres
-          PGPASSWORD: postgres
       - name: Install pg
         run: npm install pg
       - name: Connect to PostgreSQL with Node.js
@@ -91,8 +86,3 @@ jobs:
           });
           EOF
           node client.js
-        env:
-          PGHOST: localhost
-          PGUSER: postgres
-          PGDATABASE: postgres
-          PGPASSWORD: postgres
