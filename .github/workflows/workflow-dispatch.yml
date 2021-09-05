@@ -19,3 +19,15 @@ jobs:
       - run: |
           echo "Hello ${{ github.event.inputs.name }}!"
           echo "- in ${{ github.event.inputs.home }}!"
+
+      - if: github.event.inputs.name == 'Mona'
+        run: echo "Name is Mona"
+
+      - if: github.event.inputs.name != 'Mona'
+        run: echo "Name is not Mona"
+
+      - if: contains(github.event.inputs.name, 'Mona')
+        run: echo "Name contains Mona"
+
+      - if: contains(github.event.inputs.name, 'Mona') == false
+        run: echo "Name does not contain Mona"
