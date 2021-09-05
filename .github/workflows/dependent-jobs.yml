@@ -1,0 +1,36 @@
+# https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#creating-dependent-jobs
+name: Dependent jobs
+on: push
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "1. Setup"
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "2. Build"
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "3. Test"
+
+  release:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release-created.outputs.RELEASE_CREATED }}
+    steps:
+      - run: echo ::set-output name=RELEASE_CREATED::true
+        id: release-created
+
+  publish:
+    needs: release
+    runs-on: ubuntu-latest
+    if: needs.release.outputs.release_created == 'true'
+    steps:
+      - run: echo "${{ needs.release.outputs.release_created }}"
