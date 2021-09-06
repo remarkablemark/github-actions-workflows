@@ -4,6 +4,7 @@
 
 | Workflow | Badge |
 | --- | --- |
+| [Branch](.github/workflows/branch.yml) | [![Branch](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/branch.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/branch.yml) |
 | [Cache](.github/workflows/cache.yml) | [![Cache](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cache.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cache.yml) |
 | [Cron](.github/workflows/cron.yml) | [![Cron](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cron.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cron.yml) |
 | [Dependent jobs](.github/workflows/dependent-jobs.yml) | [![Dependent jobs](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/dependent-jobs.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/dependent-jobs.yml) |
