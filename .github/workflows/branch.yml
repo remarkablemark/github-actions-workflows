@@ -1,0 +1,41 @@
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags
+name: Branch
+on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:    
+      # Push events on main branch
+      - main
+      # Push events to branches matching refs/heads/mona/octocat
+      - 'mona/octocat'
+      # Push events to branches matching refs/heads/releases/10
+      - 'releases/**'
+      # Push events to branches not matching releases/10-alpha or releases/beta/3-alpha
+      - '!releases/**-alpha'
+      # Sequence of patterns matched against refs/tags
+    tags:        
+      - v1             # Push events to v1 tag
+      - v1.*           # Push events to v1.0, v1.1, and v1.9 tags
+
+  pull_request:
+    # Sequence of patterns matched against refs/heads
+    branches-ignore:
+      # Do not push events to branches matching refs/heads/mona/octocat
+      - 'mona/octocat'
+      # Do not push events to branches matching refs/heads/releases/beta/3-alpha
+      - 'releases/**-alpha'
+    # Sequence of patterns matched against refs/tags
+    tags-ignore:
+      - v1.*           # Do not push events to tags v1.0, v1.1, and v1.9
+
+jobs:
+  branch:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.ref }}
+      - run: echo $GITHUB_REF
+      - run: echo "${GITHUB_REF##*/}"
+      - run: echo "branch is master"
+        if: github.ref == 'refs/heads/master'
+      - run: echo "branch is not master"
+        if: github.ref != 'refs/heads/master'
