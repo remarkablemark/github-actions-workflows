@@ -3,40 +3,50 @@ name: Cache
 on: push
 
 jobs:
+  # https://github.com/actions/cache/blob/main/examples.md#node---npm
   cache-npm:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Cache dependencies
         uses: actions/cache@v2
+        id: cache
         with:
           path: |
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json', './package-lock.json') }}
-        id: cache
+
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --prefer-offline
+
       - name: Test dependency
         run: node -p 'require("@commitlint/config-conventional").parserPreset'
 
+  # https://github.com/actions/cache/blob/main/examples.md#node---yarn
   cache-yarn:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock', './yarn.lock') }}
-        id: cache
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile --prefer-offline
+
       - name: Test dependency
         run: node -p 'require("@commitlint/config-conventional").parserPreset'
