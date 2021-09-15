@@ -1,0 +1,49 @@
+# https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions
+name: Conditional
+on: [push, pull_request]
+
+jobs:
+  conditional:
+    runs-on: ubuntu-latest
+    steps:
+      - name: github.actor
+        run: echo "${{ github.actor }}"
+
+      - name: github.actor == 'github-actions[bot]'
+        run: echo "${{ github.actor == 'github-actions[bot]' }}"
+
+      - name: github.actor != 'github-actions[bot]'
+        run: echo "${{ github.actor != 'github-actions[bot]' }}"
+
+      - name: contains(github.actor, 'github-actions')
+        run: echo "${{ contains(github.actor, 'github-actions') }}"
+
+      - name: contains(github.actor, 'github-actions') == true
+        run: echo "${{ contains(github.actor, 'github-actions') == true }}"
+
+      - name: contains(github.actor, 'github-actions') == 'true'
+        run: echo "${{ contains(github.actor, 'github-actions') == 'true' }}"
+
+      - name: contains(github.actor, 'github-actions') == false
+        run: echo "${{ contains(github.actor, 'github-actions') == false }}"
+
+      - name: contains(github.actor, 'github-actions') == 'false'
+        run: echo "${{ contains(github.actor, 'github-actions') == 'false' }}"
+
+      - name: github.actor == 'remarkablemark'
+        run: echo "${{ github.actor == 'remarkablemark' }}"
+
+      - name: github.actor != 'remarkablemark'
+        run: echo "${{ github.actor != 'remarkablemark' }}"
+
+      - name: contains(github.actor, 'mark') == true
+        run: echo "${{ contains(github.actor, 'mark') == true }}"
+
+      - name: contains(github.actor, 'mark') == 'true'
+        run: echo "${{ contains(github.actor, 'mark') == 'true' }}"
+
+      - name: contains(github.actor, 'mark') == false
+        run: echo "${{ contains(github.actor, 'mark') == false }}"
+
+      - name: contains(github.actor, 'mark') == 'false'
+        run: echo "${{ contains(github.actor, 'mark') == 'false' }}"
