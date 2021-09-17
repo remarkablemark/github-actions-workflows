@@ -16,6 +16,7 @@
 | [Node.js Package](.github/workflows/npm-publish.yml) | [![Node.js Package](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/npm-publish.yml) |
 | [PostgreSQL](.github/workflows/postgres.yml) | [![PostgreSQL](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/postgres.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/postgres.yml) |
 | [Redis](.github/workflows/redis.yml) | [![Redis](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/redis.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/redis.yml) |
+| [automerge](.github/workflows/automerge.yml) | [![automerge](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/automerge.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/automerge.yml) |
 | [commitlint](.github/workflows/commitlint.yml) | [![commitlint](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/commitlint.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/commitlint.yml) |
 
 ## License
