@@ -1,9 +1,11 @@
 # https://github.com/hmarr/auto-approve-action
 name: Auto Approve
-on: pull_request_target
+on: [push, pull_request_target]
 
 jobs:
   auto-approve:
+    if: github.event_name == 'pull_request_target'
+    # needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Auto Approve
