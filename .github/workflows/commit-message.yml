@@ -1,0 +1,18 @@
+# https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#push
+name: Commit Message
+on: push
+
+jobs:
+  commit-message:
+    runs-on: ubuntu-latest
+    steps:
+      # youngest commit
+      - name: github.event.commits[0].message
+        run: echo "${{ github.event.commits[0].message }}"
+
+      # oldest commit
+      - name: github.event.head_commit.message
+        run: echo "${{ github.event.head_commit.message }}"
+
+      - name: github.event.commits
+        run: echo "${{ toJSON(github.event.commits) }}"
