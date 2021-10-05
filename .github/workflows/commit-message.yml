@@ -15,6 +15,6 @@ jobs:
         run: echo "${{ github.event.head_commit.message }}"
 
       - name: github.event.commits
-        run: jq . $COMMITS
+        run: echo $COMMITS | jq
         env:
           COMMITS: ${{ toJSON(github.event.commits) }}
