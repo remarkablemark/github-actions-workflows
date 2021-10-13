@@ -18,3 +18,9 @@ jobs:
         run: echo $COMMITS | jq
         env:
           COMMITS: ${{ toJSON(github.event.commits) }}
+
+      - name: commit message contains 'github'
+        run: echo "${{ contains(github.event.head_commit.message, 'github') }}"
+
+      - name: commit message contains 'deps-dev'
+        run: echo "${{ contains(github.event.head_commit.message, 'deps-dev') }}"
