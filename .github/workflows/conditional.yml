@@ -47,3 +47,15 @@ jobs:
 
       - name: contains(github.actor, 'mark') == 'false'
         run: echo "${{ contains(github.actor, 'mark') == 'false' }}"
+
+      - name: true && 'one'
+        run: echo "${{ true && 'one' }}"
+
+      - name: false && 'zero'
+        run: echo "${{ false && 'zero' }}"
+
+      - name: true || 'one'
+        run: echo "${{ true || 'one' }}"
+
+      - name: false || 'zero'
+        run: echo "${{ false || 'zero' }}"
