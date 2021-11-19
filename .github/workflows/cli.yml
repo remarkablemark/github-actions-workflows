@@ -5,14 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: aws
-        run: aws
+        run: aws help
 
       - name: docker
-        run: docker
+        run: docker help
 
       # https://docs.github.com/en/actions/advanced-guides/using-github-cli-in-workflows
       - name: gh
-        run: gh
+        run: gh help
 
       - name: heroku
-        run: heroku
+        run: heroku help
