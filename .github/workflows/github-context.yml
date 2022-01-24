@@ -1,0 +1,17 @@
+# https://docs.github.com/en/actions/learn-github-actions/contexts
+name: github-context
+on: [push, pull_request]
+
+jobs:
+  github-context:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: echo GITHUB_CONTEXT
+        run: echo $GITHUB_CONTEXT
+
+      - name: echo github
+        run: echo ${{ github }}
+
+      - name: echo github.event
+        run: echo ${{ github.event }}
