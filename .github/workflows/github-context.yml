@@ -7,11 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: echo GITHUB_CONTEXT
-        run: echo $GITHUB_CONTEXT
+      - name: github
+        run: echo ${{ github }} | jq
 
-      - name: echo github
-        run: echo ${{ github }}
-
-      - name: echo github.event
-        run: echo ${{ github.event }}
+      - name: github.event
+        run: echo ${{ github.event }} | jq
