@@ -8,20 +8,22 @@ jobs:
 
     # https://www.edwardthomson.com/blog/github_actions_12_information_about_your_workflow.html
     steps:
-      - name: github context
-        run: echo "${{ toJson(github) }}"
-
-      - name: job context
-        run: echo "${{ toJson(job) }}"
-
-      - name: steps context
-        run: echo "${{ toJson(steps) }}"
-
-      - name: runner context
-        run: echo "${{ toJson(runner) }}"
-
-      - name: strategy context
-        run: echo "${{ toJson(strategy) }}"
-
-      - name: matrix context
-        run: echo "${{ toJson(matrix) }}"
+      - name: Inspect contexts
+        run: |
+          echo "The github context is:"
+          echo "${{ toJson(github) }}"
+          echo ""
+          echo "The job context is:"
+          echo "${{ toJson(job) }}"
+          echo ""
+          echo "The steps context is:"
+          echo "${{ toJson(steps) }}"
+          echo ""
+          echo "The runner context is:"
+          echo "${{ toJson(runner) }}"
+          echo ""
+          echo "The strategy context is:"
+          echo "${{ toJson(strategy) }}"
+          echo ""
+          echo "The matrix context is:"
+          echo "${{ toJson(matrix) }}"
