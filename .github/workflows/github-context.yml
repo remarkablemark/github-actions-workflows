@@ -6,9 +6,22 @@ jobs:
   github-context:
     runs-on: ubuntu-latest
 
+    # https://www.edwardthomson.com/blog/github_actions_12_information_about_your_workflow.html
     steps:
-      - name: github
-        run: echo ${{ github }} | jq
+      - name: github context
+        run: echo ${{ toJson(github) }} | jq
 
-      - name: github.event
-        run: echo ${{ github.event }} | jq
+      - name: job context
+        run: echo ${{ toJson(job) }} | jq
+
+      - name: steps context
+        run: echo ${{ toJson(steps) }} | jq
+
+      - name: runner context
+        run: echo ${{ toJson(runner) }} | jq
+
+      - name: strategy context
+        run: echo ${{ toJson(strategy) }} | jq
+
+      - name: matrix context
+        run: echo ${{ toJson(matrix) }} | jq
