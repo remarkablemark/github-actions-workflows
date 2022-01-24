@@ -9,19 +9,19 @@ jobs:
     # https://www.edwardthomson.com/blog/github_actions_12_information_about_your_workflow.html
     steps:
       - name: github context
-        run: echo ${{ toJson(github) }} | jq
+        run: echo "${{ toJson(github) }}" | jq
 
       - name: job context
-        run: echo ${{ toJson(job) }} | jq
+        run: echo "${{ toJson(job) }}" | jq
 
       - name: steps context
-        run: echo ${{ toJson(steps) }} | jq
+        run: echo "${{ toJson(steps) }}" | jq
 
       - name: runner context
-        run: echo ${{ toJson(runner) }} | jq
+        run: echo "${{ toJson(runner) }}" | jq
 
       - name: strategy context
-        run: echo ${{ toJson(strategy) }} | jq
+        run: echo "${{ toJson(strategy) }}" | jq
 
       - name: matrix context
-        run: echo ${{ toJson(matrix) }} | jq
+        run: echo "${{ toJson(matrix) }}" | jq
