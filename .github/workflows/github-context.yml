@@ -1,5 +1,5 @@
 # https://docs.github.com/en/actions/learn-github-actions/contexts
-name: github-context
+name: GitHub Context
 on: [push, pull_request]
 
 jobs:
