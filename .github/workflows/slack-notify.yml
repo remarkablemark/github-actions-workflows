@@ -1,0 +1,24 @@
+# https://github.com/marketplace/actions/slack-notify
+name: Slack Notify
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Title'
+        required: true
+      message:
+        description: 'Message'
+        required: true
+
+jobs:
+  slack-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_TITLE: ${{ github.event.inputs.title }}
+          SLACK_MESSAGE: ${{ github.event.inputs.message }}
+          SLACK_FOOTER: ''
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
