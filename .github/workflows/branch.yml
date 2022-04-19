@@ -41,3 +41,6 @@ jobs:
         if: github.ref == 'refs/heads/master'
       - run: echo "branch is not master"
         if: github.ref != 'refs/heads/master'
+      # `github.head_ref` is set when the workflow was triggered by a `pull_request`
+      # `github.ref_name` is set when the workflow was not triggered by a `pull_request`
+      - run: echo ${{ github.head_ref || github.ref_name }}
