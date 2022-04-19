@@ -1,0 +1,106 @@
+# https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
+name: Environment Variables
+on: push
+
+jobs:
+  environment-variables:
+    runs-on: ubuntu-latest
+    steps:
+      # Always set to true
+      - run: echo $CI
+
+      # The name of the action currently running, or the id of a step
+      - run: echo $GITHUB_ACTION
+
+      # The path where an action is located
+      - run: echo $GITHUB_ACTION_PATH
+
+      # For a step executing an action, this is the owner and repository name of the action
+      - run: echo $GITHUB_ACTION_REPOSITORY
+
+      # Always set to true when GitHub Actions is running the workflow
+      - run: echo $GITHUB_ACTIONS
+
+      # The name of the person or app that initiated the workflow
+      - run: echo $GITHUB_ACTOR
+
+      # Returns the API URL
+      - run: echo $GITHUB_API_URL
+
+      # The path on the runner to the file that sets environment variables from workflow commands
+      - run: echo $GITHUB_BASE_REF
+
+      # The name of the event that triggered the workflow
+      - run: echo $GITHUB_EVENT_NAME
+
+      # The path to the file on the runner that contains the full event webhook payload
+      - run: echo $GITHUB_EVENT_PATH
+
+      # Returns the GraphQL API URL
+      - run: echo $GITHUB_GRAPHQL_URL
+
+      # The head ref or source branch of the pull request in a workflow run
+      - run: echo $GITHUB_HEAD_REF
+
+      # The job_id of the current job
+      - run: echo $GITHUB_JOB
+
+      # The path on the runner to the file that sets system PATH variables from workflow commands
+      - run: echo $GITHUB_PATH
+
+      # The branch or tag ref that triggered the workflow run
+      - run: echo $GITHUB_REF
+
+      # The branch or tag name that triggered the workflow run
+      - run: echo $GITHUB_REF_NAME
+
+      # true if branch protections are configured for the ref that triggered the workflow run
+      - run: echo $GITHUB_REF_PROTECTED
+
+      # The type of ref that triggered the workflow run
+      - run: echo $GITHUB_REF_TYPE
+
+      # The owner and repository name
+      - run: echo $GITHUB_REPOSITORY
+
+      # The repository owner's name
+      - run: echo $GITHUB_REPOSITORY_OWNER
+
+      # The number of days that workflow run logs and artifacts are kept
+      - run: echo $GITHUB_RETENTION_DAYS
+
+      # A unique number for each attempt of a particular workflow run in a repository
+      - run: echo $GITHUB_RUN_ATTEMPT
+
+      # A unique number for each workflow run within a repository
+      - run: echo $GITHUB_RUN_ID
+
+      # A unique number for each run of a particular workflow in a repository
+      - run: echo $GITHUB_RUN_NUMBER
+
+      # The URL of the GitHub server
+      - run: echo $GITHUB_SERVER_URL
+
+      # The commit SHA that triggered the workflow
+      - run: echo $GITHUB_SHA
+
+      # The name of the workflow
+      - run: echo $GITHUB_WORKFLOW
+
+      # The default working directory on the runner for steps, and the default location of your repository when using the checkout action
+      - run: echo $GITHUB_WORKSPACE
+
+      # The architecture of the runner executing the job
+      - run: echo $RUNNER_ARCH
+
+      # The name of the runner executing the job
+      - run: echo $RUNNER_NAME
+
+      # The operating system of the runner executing the job
+      - run: echo $RUNNER_OS
+
+      # The path to a temporary directory on the runner
+      - run: echo $RUNNER_TEMP
+
+      # The path to the directory containing preinstalled tools for GitHub-hosted runners
+      - run: echo $RUNNER_TOOL_CACHE
