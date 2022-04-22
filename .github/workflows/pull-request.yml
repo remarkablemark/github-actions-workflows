@@ -1,0 +1,50 @@
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+name: Pull Request
+on: pull_request
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+    - name: github.event_name
+      run: echo '${{ github.event_name }}'
+
+    - name: github.base_ref (branch)
+      run: echo '${{ github.base_ref }}'
+
+    - name: github.event.number (PR number)
+      run: echo '${{ github.event.number }}'
+
+    # https://frontside.com/blog/2020-05-26-github-actions-pull_request/#how-do-workflows-trigger-on-pull_request
+    #
+    # | type                   | description                                           |
+    # | ---------------------- | ----------------------------------------------------- |
+    # | assigned               | a user is assigned to the pull request                |
+    # | unassigned             | a user is unassigned from the pull request            |
+    # | labeled                | a label is applied to the pull request                |
+    # | unlabeled              | a label is removed from the pull request              |
+    # | opened                 | pull request is created                               |
+    # | edited                 | title, body, or the base branch of the PR is modified |
+    # | closed                 | pull request is closed (as opposed to merged)         |
+    # | reopened               | closed pull request is reopened                       |
+    # | synchronize            | commit(s) pushed to the pull request                  |
+    # | ready_for_review       | pull request is taken out from draft mode             |
+    # | locked                 | pull request is locked                                |
+    # | unlocked               | pull request is unlocked                              |
+    # | review_requested       | request a user for review                             |
+    # | review_request_removed | remove request from user for review                   |
+    - name: github.event.action (activity type)
+      run: echo '${{ github.event.action }}'
+
+    - name: github.event.pull_request
+      run: echo '${{ toJson(github.event.pull_request) }}'
+
+  pull-request-merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR merged
+      run: echo 'PR merged'
+
+    - name: github.event.pull_request
+      run: echo '${{ toJson(github.event.pull_request) }}'
