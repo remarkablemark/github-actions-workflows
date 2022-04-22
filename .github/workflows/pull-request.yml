@@ -52,10 +52,14 @@ jobs:
     steps:
     # https://cli.github.com/manual/gh_pr_comment
     - name: Add comment to PR
+      if: github.event.action == 'opened'
       run: gh pr comment ${{ github.event.number }} --body '[Hi from GitHub CLI](https://cli.github.com/manual/gh_pr_comment)'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # https://github.com/actions/github-script#comment-on-an-issue
     - name: Add comment to PR
+      if: github.event.action == 'opened'
       uses: actions/github-script@v6
       with:
         script: |
