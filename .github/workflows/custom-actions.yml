@@ -1,0 +1,17 @@
+# https://docs.github.com/en/actions/creating-actions/about-custom-actions
+name: Custom Actions
+on: [push]
+
+jobs:
+  # https://github.com/remarkablemark/hello-world-javascript-action
+  hello-world-javascript-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world action step
+        id: hello
+        uses: remarkablemark/hello-world-javascript-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
