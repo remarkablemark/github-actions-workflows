@@ -39,15 +39,18 @@ jobs:
       run: echo '${{ github.head_ref }}'
 
     - name: github.event.pull_request.title (PR title)
+      if: github.event_name == 'pull_request'
       run: echo '${{ github.event.pull_request.title }}'
 
     - name: github.event.number (PR number)
+      if: github.event_name == 'pull_request'
       run: echo '${{ github.event.number }}'
 
     - name: github.event.action (activity type)
       run: echo '${{ github.event.action }}'
 
     - name: github.event.pull_request
+      if: github.event_name == 'pull_request'
       run: echo '${{ toJson(github.event.pull_request) }}'
 
   pull-request-comment:
