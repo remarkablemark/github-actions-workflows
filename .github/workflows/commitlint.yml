@@ -1,6 +1,10 @@
 # https://commitlint.js.org/
 name: commitlint
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    # defaults to opened, synchronize, reopened
+    types: [opened, synchronize, reopened, edited]
 
 jobs:
   commitlint:
