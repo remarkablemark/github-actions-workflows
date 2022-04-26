@@ -38,6 +38,9 @@ jobs:
     - name: github.head_ref (source branch)
       run: echo '${{ github.head_ref }}'
 
+    - name: github.event.pull_request.title (PR title)
+      run: echo '${{ github.event.pull_request.title }}'
+
     - name: github.event.number (PR number)
       run: echo '${{ github.event.number }}'
 
