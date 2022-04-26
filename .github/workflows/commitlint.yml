@@ -25,4 +25,4 @@ jobs:
 
       - name: Lint PR title
         if: github.event_name == 'pull_request'
-        run: echo ${{ github.event.pull_request.title }} | npx commitlint
+        run: echo '${{ github.event.pull_request.title }}' | npx commitlint
