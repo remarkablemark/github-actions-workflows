@@ -64,6 +64,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+          --name postgres
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
@@ -88,11 +89,12 @@ jobs:
       - name: Show PostgreSQL config file
         run: psql -c 'SHOW config_file;'
 
-      # - name: Alter max connections
-      #   run: psql -c "ALTER SYSTEM SET max_connections TO '500';"
-
       - name: Alter max connections
-        run: sed -i -e 's/max_connections = 100/max_connections = 500/' /var/lib/postgresql/data/postgresql.conf
+        run: |
+          docker exec -i postgres bash << EOF
+            sed -i -e 's/max_connections = 100/max_connections = 1000/' /var/lib/postgresql/data/postgresql.conf
+            sed -i -e 's/shared_buffers = 128MB/shared_buffers = 2GB/' /var/lib/postgresql/data/postgresql.conf
+          EOF
 
       - name: Restart PostgreSQL
         run: sudo service postgresql restart
