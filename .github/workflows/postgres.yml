@@ -86,7 +86,7 @@ jobs:
         run: psql -c 'SHOW max_connections;'
 
       - name: Restart PostgreSQL
-        run: sudo service restart postgresql.service
+        run: sudo service restart postgresql-14.service
 
       - name: Alter max connections
         run: |
