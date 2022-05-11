@@ -38,6 +38,7 @@ jobs:
       - name: Alter max connections
         run: |
           psql -c 'ALTER SYSTEM SET max_connections TO '500';'
+          sudo systemctl status postgresql.service
           psql -c 'SHOW max_connections;'
 
       - name: Install pg
@@ -93,6 +94,7 @@ jobs:
       - name: Alter max connections
         run: |
           psql -c 'ALTER SYSTEM SET max_connections TO '500';'
+          sudo systemctl status postgresql.service
           psql -c 'SHOW max_connections;'
 
       - name: Install pg
