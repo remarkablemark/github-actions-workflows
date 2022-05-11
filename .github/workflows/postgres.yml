@@ -17,20 +17,33 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
     env:
       PGHOST: postgres
       PGUSER: postgres
       PGDATABASE: postgres
       PGPASSWORD: postgres
+
     steps:
       - name: Install postgresql-client
         run: |
           apt-get update
           apt-get install --yes postgresql-client
+
       - name: Connect to PostgreSQL with CLI
         run: psql -c 'SELECT VERSION();'
+
+      - name: Show max connections
+        run: psql -c 'SHOW max_connections;'
+
+      - name: Alter max connections
+        run: |
+          postgres -c 'max_connections=500;'
+          psql -c 'SHOW max_connections;'
+
       - name: Install pg
         run: npm install pg
+
       - name: Connect to PostgreSQL with Node.js
         run: |
           cat > client.js << EOF
@@ -60,20 +73,33 @@ jobs:
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
+
     env:
       PGHOST: localhost
       PGUSER: postgres
       PGDATABASE: postgres
       PGPASSWORD: postgres
+
     steps:
       - name: Install postgresql-client
         run: |
           sudo apt-get update
           sudo apt-get install --yes postgresql-client
+
       - name: Connect to PostgreSQL with CLI
         run: psql -c 'SELECT VERSION();'
+
+      - name: Show max connections
+        run: psql -c 'SHOW max_connections;'
+
+      - name: Alter max connections
+        run: |
+          postgres -c 'max_connections=500;'
+          psql -c 'SHOW max_connections;'
+
       - name: Install pg
         run: npm install pg
+
       - name: Connect to PostgreSQL with Node.js
         run: |
           cat > client.js << EOF
