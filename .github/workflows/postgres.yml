@@ -85,10 +85,13 @@ jobs:
       - name: Show max connections
         run: psql -c 'SHOW max_connections;'
 
+      - name: Restart PostgreSQL
+        run: sudo service restart postgresql.service
+
       - name: Alter max connections
         run: |
           psql -c 'ALTER SYSTEM SET max_connections TO '500';'
-          sudo systemctl restart postgresql.service
+          sudo service restart postgresql.service
           psql -c 'SHOW max_connections;'
 
       - name: Install pg
