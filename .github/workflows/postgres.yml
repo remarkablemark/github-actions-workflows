@@ -38,7 +38,7 @@ jobs:
 
       - name: Alter max connections
         run: |
-          postgres -c 'max_connections=500;'
+          psql -c 'max_connections=500;'
           psql -c 'SHOW max_connections;'
 
       - name: Install pg
@@ -94,7 +94,7 @@ jobs:
 
       - name: Alter max connections
         run: |
-          postgres -c 'max_connections=500;'
+          psql -c 'max_connections=500;'
           psql -c 'SHOW max_connections;'
 
       - name: Install pg
