@@ -17,7 +17,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
     env:
       PGHOST: postgres
       PGUSER: postgres
@@ -38,7 +37,7 @@ jobs:
 
       - name: Alter max connections
         run: |
-          psql -c 'max_connections=500;'
+          psql -c 'ALTER SYSTEM SET max_connections TO '500';'
           psql -c 'SHOW max_connections;'
 
       - name: Install pg
@@ -73,7 +72,6 @@ jobs:
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
-
     env:
       PGHOST: localhost
       PGUSER: postgres
@@ -94,7 +92,7 @@ jobs:
 
       - name: Alter max connections
         run: |
-          psql -c 'max_connections=500;'
+          psql -c 'ALTER SYSTEM SET max_connections TO '500';'
           psql -c 'SHOW max_connections;'
 
       - name: Install pg
