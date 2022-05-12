@@ -75,9 +75,6 @@ jobs:
       PGPASSWORD: postgres
 
     steps:
-      - name: Show status of all services
-        run: service --status-all | grep postgres
-
       - name: Install postgresql-client
         run: |
           sudo apt-get update
@@ -95,9 +92,7 @@ jobs:
             sed -i -e 's/max_connections = 100/max_connections = 1000/' /var/lib/postgresql/data/postgresql.conf
             sed -i -e 's/shared_buffers = 128MB/shared_buffers = 2GB/' /var/lib/postgresql/data/postgresql.conf
           EOF
-
-      - name: Restart PostgreSQL
-        run: sudo service postgresql restart
+          docker restart --time 0 postgres
 
       - name: Show max connections
         run: psql -c 'SHOW max_connections;'
