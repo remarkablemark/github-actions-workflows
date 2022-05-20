@@ -27,7 +27,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           npx commitlint << EOF
-            ${{ github.event.pull_request.title }}
+          ${{ github.event.pull_request.title }}
           EOF
 
       - name: Lint string
