@@ -105,5 +105,8 @@ jobs:
       # The path to the directory containing preinstalled tools for GitHub-hosted runners
       - run: echo $RUNNER_TOOL_CACHE
 
-      - run: export FOO=bar
+      # https://www.edwardthomson.com/blog/github_actions_15_sharing_data_between_steps.html
+      - run: |
+          export FOO=bar
+          echo '::set-env name=FOO::$FOO'
       - run: echo $FOO
