@@ -104,3 +104,6 @@ jobs:
 
       # The path to the directory containing preinstalled tools for GitHub-hosted runners
       - run: echo $RUNNER_TOOL_CACHE
+
+      - run: export FOO=bar
+      - run: echo $FOO
