@@ -105,8 +105,6 @@ jobs:
       # The path to the directory containing preinstalled tools for GitHub-hosted runners
       - run: echo $RUNNER_TOOL_CACHE
 
-      # https://www.edwardthomson.com/blog/github_actions_15_sharing_data_between_steps.html
-      - run: |
-          export FOO=bar
-          echo '::set-env name=FOO::$FOO'
-      - run: echo $FOO
+      # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
+      - run: echo "action_state=yellow" >> $GITHUB_ENV
+      - run: echo "${{ env.action_state }}" # This will output 'yellow'
