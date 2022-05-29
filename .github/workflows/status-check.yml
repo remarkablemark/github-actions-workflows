@@ -28,6 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ job.status }}
-      - run: exit 1
+      # - run: exit 1
       - if: failure()
         run: echo "Returns true when any previous step of a job fails. If you have a chain of dependent jobs, failure() returns true if any ancestor job fails."
