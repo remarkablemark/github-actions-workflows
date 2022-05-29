@@ -1,4 +1,4 @@
-https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions
+# https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions
 name: Status Check
 on: push
 
