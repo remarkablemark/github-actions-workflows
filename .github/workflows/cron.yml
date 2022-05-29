@@ -6,8 +6,21 @@ on:
     # This example triggers the workflow every day at 5:30 and 17:30 UTC
     # https://crontab.cronhub.io/
     - cron:  '30 5,17 * * *'
+    - cron: '30 5 * * 1,3'
+    - cron: '30 5 * * 2,4'
+
 jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
       - run: date
+
+  # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onschedule
+  cron-schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Not on Monday or Wednesday
+        if: github.event.schedule != '30 5 * * 1,3'
+        run: echo "This step will be skipped on Monday and Wednesday"
+      - name: Every time
+        run: echo "This step will always run"
