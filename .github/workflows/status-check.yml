@@ -1,0 +1,33 @@
+https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions
+name: Status Check
+on: push
+
+jobs:
+  success:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ job.status }}
+      - if: success()
+        run: echo "Returns true when none of the previous steps have failed or been canceled."
+
+  always:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ job.status }}
+      - if: always()
+        run: echo "Causes the step to always execute, and returns true, even when canceled. A job or step will not run when a critical failure prevents the task from running."
+
+  cancelled:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ job.status }}
+      - if: cancelled()
+        run: echo "Returns true if the workflow was canceled."
+
+  failure:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ job.status }}
+      - run: exit 1
+      - if: failure()
+        run: echo "Returns true when any previous step of a job fails. If you have a chain of dependent jobs, failure() returns true if any ancestor job fails."
