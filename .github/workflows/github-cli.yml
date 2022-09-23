@@ -1,0 +1,15 @@
+# https://docs.github.com/en/actions/using-workflows/using-github-cli-in-workflows
+name: GitHub CLI
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  github-cli-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh issue comment $ISSUE --body "Thank you for opening this issue!"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.html_url }}
