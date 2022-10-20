@@ -1,0 +1,19 @@
+name: Continue On Error
+on: push
+
+jobs:
+  continue-on-error:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
+        # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepscontinue-on-error
+        continue-on-error: true
+        id: test
+
+      - run: echo ${{ steps.test.conclusion }}
+      - if: steps.test.conclusion == 'success'
+        run: echo ${{ steps.test.conclusion }}
+
+      - run: echo ${{ steps.test.outcome }}
+      - if: steps.test.outcome == 'success'
+        run: echo ${{ steps.test.outcome }}
