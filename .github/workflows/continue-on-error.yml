@@ -10,10 +10,12 @@ jobs:
         continue-on-error: true
         id: test
 
+      # success
       - run: echo ${{ steps.test.conclusion }}
       - if: steps.test.conclusion == 'success'
         run: echo ${{ steps.test.conclusion }}
 
+      # failure
       - run: echo ${{ steps.test.outcome }}
-      - if: steps.test.outcome == 'success'
+      - if: steps.test.outcome == 'failure'
         run: echo ${{ steps.test.outcome }}
