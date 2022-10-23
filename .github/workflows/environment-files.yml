@@ -1,0 +1,34 @@
+# https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#environment-files
+name: Environment Files
+on: push
+
+jobs:
+  environment-files:
+    runs-on: ubuntu-latest
+    steps:
+      # Setting an environment variable
+      # echo "{environment_variable_name}={value}" >> $GITHUB_ENV
+      # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ env.action_state }}" # This will output 'yellow'
+
+      # Setting an output parameter
+      # echo "{name}={value}" >> $GITHUB_OUTPUT
+      # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
+      - name: Set color
+        id: random-color-generator
+        run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+      - name: Get color
+        run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
+
+      # Adding a job summary
+      # echo "{markdown content}" >> $GITHUB_STEP_SUMMARY
+      # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary
+      - name: Set job summary
+        run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
