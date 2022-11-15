@@ -10,7 +10,7 @@ jobs:
         node: [10, 12, 14]
     steps:
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - run: node --version
