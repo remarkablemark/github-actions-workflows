@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Auto Approve
-        uses: hmarr/auto-approve-action@v2
+        uses: hmarr/auto-approve-action@v3
         # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions
         if: github.actor == 'dependabot[bot]'
         with:
