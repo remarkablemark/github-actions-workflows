@@ -76,7 +76,7 @@ jobs:
     - name: Add comment to PR
       run: gh pr comment ${{ github.event.number }} --body '[Hi from GitHub CLI](https://cli.github.com/manual/gh_pr_comment)'
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
 
   pull-request-merged:
     if: github.event.pull_request.merged == true
