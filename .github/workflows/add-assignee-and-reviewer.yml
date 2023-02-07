@@ -9,9 +9,12 @@ jobs:
   add-assignee-and-reviewer:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
     # https://cli.github.com/manual/gh_pr_edit
     - name: Auto assign reviewer to PR
       if: contains(github.event.action, 'opened')
-      run: gh pr edit ${{ github.event.pull_request.html_url }} --add-assignee @me --add-reviewer remarkablemark
+      run: gh pr edit ${{ github.event.pull_request.html_url }} --add-assignee '@me' --add-reviewer remarkablemark
       env:
         GITHUB_TOKEN: ${{ github.token }}
