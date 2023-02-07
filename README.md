@@ -6,6 +6,7 @@
 
 | Workflow | Badge |
 | --- | --- |
+| [Add Assignee and Reviewer](.github/workflows/add-assignee-and-reviewer.yml) | [![Add Assignee and Reviewer](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/add-assignee-and-reviewer.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/add-assignee-and-reviewer.yml) |
 | [Auto Approve](.github/workflows/auto-approve.yml) | [![Auto Approve](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/auto-approve.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/auto-approve.yml) |
 | [Branch](.github/workflows/branch.yml) | [![Branch](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/branch.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/branch.yml) |
 | [Cache](.github/workflows/cache.yml) | [![Cache](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cache.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/cache.yml) |
