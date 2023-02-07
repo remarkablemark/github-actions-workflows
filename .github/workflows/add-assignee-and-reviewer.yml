@@ -1,12 +1,16 @@
 name: Add Assignee and Reviewer
 on: pull_request_target
 
+permissions:
+  pull-requests: write
+  contents: write
+
 jobs:
   add-assignee-and-reviewer:
     runs-on: ubuntu-latest
     steps:
     # https://cli.github.com/manual/gh_pr_edit
-    - name: Auto assign reviewer to opened PR
+    - name: Auto assign reviewer to PR
       if: contains(github.event.action, 'opened')
       run: gh pr edit ${{ github.event.pull_request.html_url }} --add-assignee @me --add-reviewer remarkablemark
       env:
