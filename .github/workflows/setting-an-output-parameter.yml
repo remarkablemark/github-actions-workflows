@@ -1,0 +1,16 @@
+# https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
+name: Setting an output parameter
+on: push
+
+jobs:
+  setting-an-output-parameter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set color
+        id: random-color-generator
+        # echo "{name}={value}" >> $GITHUB_OUTPUT
+        run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+
+      - name: Get color
+        run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
