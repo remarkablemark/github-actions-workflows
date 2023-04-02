@@ -1,0 +1,53 @@
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+name: shell
+on: push
+
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrun
+# defaults:
+#   run:
+#     shell: bash
+#     working-directory: scripts
+
+jobs:
+  shell:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running a script using bash
+        run: echo $PATH
+        shell: bash
+
+      - name: Running a script using PowerShell Core
+        run: echo ${env:PATH}
+        shell: pwsh
+
+      - name: Running a Python script
+        run: |
+          import os
+          print(os.environ['PATH'])
+        shell: python
+
+      - name: Custom Perl shell
+        run: |
+          print %ENV
+        shell: perl {0}
+
+  shell-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Running a script using Windows cmd
+        run: echo %PATH%
+        shell: cmd
+
+      - name: Running a script using PowerShell Core
+        run: echo ${env:PATH}
+        shell: pwsh
+
+      - name: Using PowerShell Desktop to run a script
+        run: echo ${env:PATH}
+        shell: powershell
+
+      - name: Running a Python script
+        run: |
+          import os
+          print(os.environ['PATH'])
+        shell: python
