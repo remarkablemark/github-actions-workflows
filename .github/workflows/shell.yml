@@ -31,6 +31,11 @@ jobs:
           print %ENV
         shell: perl {0}
 
+      - name: Custom Node.js shell
+        run: |
+          console.log(process.env);
+        shell: node {0}
+
   shell-windows:
     runs-on: windows-latest
     steps:
