@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: github context
         run: echo '${{ toJson(github) }}'
+        continue-on-error: true
 
       - name: job context
         run: echo '${{ toJson(job) }}'
