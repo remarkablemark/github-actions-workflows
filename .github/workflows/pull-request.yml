@@ -56,6 +56,9 @@ jobs:
 
   pull-request-comment:
     runs-on: ubuntu-latest
+    # https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs#example-setting-permissions-for-a-specific-job
+    permissions:
+      pull-requests: write
     steps:
     # https://github.com/actions/github-script#comment-on-an-issue
     - name: Add comment to opened PR
