@@ -87,6 +87,6 @@ jobs:
     steps:
     - name: PR merged
       run: echo 'PR merged'
-
     - name: github.event.pull_request
       run: echo '${{ toJson(github.event.pull_request) }}'
+      continue-on-error: true
