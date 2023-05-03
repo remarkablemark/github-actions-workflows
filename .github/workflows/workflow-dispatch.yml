@@ -1,4 +1,4 @@
-# https://docs.github.com/en/actions/reference/events-that-trigger-workflows#manual-events
+# https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/
 name: Manually triggered workflow
 on:
   workflow_dispatch:
@@ -31,3 +31,38 @@ jobs:
 
       - if: contains(github.event.inputs.name, 'Mona') == false
         run: echo "Name does not contain Mona"
+
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       logLevel:
+#         description: 'Log level'
+#         required: true
+#         default: 'warning'
+#         type: choice
+#         options:
+#         - info
+#         - warning
+#         - debug
+#       tags:
+#         description: 'Test scenario tags'
+#         required: false
+#         type: boolean
+#       environment:
+#         description: 'Environment to run tests against'
+#         type: environment
+#         required: true
+# 
+# jobs:
+#   log-the-inputs:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: |
+#           echo "Log level: $LEVEL"
+#           echo "Tags: $TAGS"
+#           echo "Environment: $ENVIRONMENT"
+#         env:
+#           LEVEL: ${{ inputs.logLevel }}
+#           TAGS: ${{ inputs.tags }}
+#           ENVIRONMENT: ${{ inputs.environment }}
