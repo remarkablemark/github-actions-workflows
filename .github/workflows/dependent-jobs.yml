@@ -25,7 +25,7 @@ jobs:
     outputs:
       release_created: ${{ steps.release-created.outputs.RELEASE_CREATED }}
     steps:
-      - run: echo ::set-output name=RELEASE_CREATED::true
+      - run: echo "RELEASE_CREATED=true" >> $GITHUB_OUTPUT
         id: release-created
 
   publish:
