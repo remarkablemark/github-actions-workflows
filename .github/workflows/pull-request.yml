@@ -63,7 +63,7 @@ jobs:
     # https://github.com/actions/github-script#comment-on-an-issue
     - name: Add comment to opened PR
       if: github.event.action == 'opened'
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           github.rest.issues.createComment({
