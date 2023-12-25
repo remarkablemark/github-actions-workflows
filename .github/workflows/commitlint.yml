@@ -33,3 +33,6 @@ jobs:
       - name: Lint string
         run: |
           echo 'chore: message' | npx commitlint
+
+      # https://github.com/remarkablemark/commitlint
+      - uses: remarkablemark/commitlint@v1
