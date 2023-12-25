@@ -108,3 +108,9 @@ jobs:
       # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
       - run: echo "action_state=yellow" >> $GITHUB_ENV
       - run: echo "${{ env.action_state }}" # This will output 'yellow'
+
+  # https://docs.github.com/actions/learn-github-actions/variables
+  repository-variables:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ vars.MY_REPOSITORY_VARIABLE }}
