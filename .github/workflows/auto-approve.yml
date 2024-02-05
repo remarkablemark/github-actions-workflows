@@ -16,7 +16,7 @@ jobs:
 
       # https://github.com/hmarr/auto-approve-action
       - name: Auto Approve
-        uses: hmarr/auto-approve-action@v3
+        uses: hmarr/auto-approve-action@v4
         if: github.actor == 'dependabot[bot]'
         with:
           github-token: ${{ github.token }}
