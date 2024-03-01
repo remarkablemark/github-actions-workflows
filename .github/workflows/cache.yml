@@ -24,7 +24,7 @@ jobs:
         run: npm ci --prefer-offline
 
       - name: Test dependency
-        run: node -p 'require("@commitlint/config-conventional").parserPreset'
+        run: npm list @commitlint/cli
 
   # https://github.com/actions/cache/blob/main/examples.md#node---yarn
   cache-yarn:
@@ -49,4 +49,4 @@ jobs:
         run: yarn --frozen-lockfile --prefer-offline
 
       - name: Test dependency
-        run: node -p 'require("@commitlint/config-conventional").parserPreset'
+        run: npm list @commitlint/cli
