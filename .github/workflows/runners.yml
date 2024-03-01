@@ -1,0 +1,62 @@
+# https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+name: runners
+on: push
+
+jobs:
+  # Linux
+  ubuntu-latest:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo ubuntu-latest
+
+  ubuntu-22-04:
+    runs-on: ubuntu-22.04
+    steps:
+    - run: echo ubuntu-22.04
+
+  ubuntu-20-04:
+    runs-on: ubuntu-20.04
+    steps:
+    - run: echo ubuntu-20.04
+
+  # Windows
+  windows-latest:
+    runs-on: windows-latest
+    steps:
+    - run: echo windows-latest
+
+  windows-2022:
+    runs-on: windows-2022
+    steps:
+    - run: echo windows-2022
+
+  windows-2019:
+    runs-on: windows-2019
+    steps:
+    - run: echo windows-2019
+
+  # macOS
+  macos-latest:
+    runs-on: macos-latest
+    steps:
+    - run: echo macos-latest
+
+  macos-14:
+    runs-on: macos-14
+    steps:
+    - run: echo macos-14
+
+  macos-13:
+    runs-on: macos-13
+    steps:
+    - run: echo macos-13
+
+  macos-12:
+    runs-on: macos-12
+    steps:
+    - run: echo macos-12
+
+  macos-11:
+    runs-on: macos-11
+    steps:
+    - run: echo macos-11
