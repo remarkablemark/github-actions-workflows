@@ -1,0 +1,16 @@
+# https://docs.github.com/en/actions/sharing-automations/reusing-workflows#example-reusable-workflow
+name: Reusable workflow
+
+on:
+  workflow_call:
+    inputs:
+      message:
+        required: true
+        type: string
+
+jobs:
+  reusable-workflow:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print "${{ inputs.message }}"
+      run: echo ${{ inputs.message }}
