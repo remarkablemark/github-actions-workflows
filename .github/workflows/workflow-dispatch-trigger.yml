@@ -1,0 +1,22 @@
+# https://runs-on.com/github-actions/triggering-a-workflow-from-another-workflow/
+name: Workflow Dispatch Trigger
+on: push
+
+jobs:
+  workflow-dispatch-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Generate GitHub App token
+      #   id: generate_token
+      #   uses: actions/create-github-app-token@v1
+      #   with:
+      #     app_id: ${{ secrets.APP_ID }}
+      #     private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Trigger another workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: workflow-dispatch.yml
+          # token: ${{ steps.generate_token.outputs.token }}
+          repo: remarkablemark/github-actions-workflows
+          ref: master
