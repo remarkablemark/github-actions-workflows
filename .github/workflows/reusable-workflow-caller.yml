@@ -1,0 +1,10 @@
+# https://docs.github.com/en/actions/sharing-automations/reusing-workflows#example-caller-workflow
+
+name: Call a reusable workflow
+on: push
+
+jobs:
+  reusable-workflow-caller:
+    uses: remarkablemark/github-actions-workflows/.github/workflows/reusable-workflow.yml@master
+    with:
+      message: Hello, world!
