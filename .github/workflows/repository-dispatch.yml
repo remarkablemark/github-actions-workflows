@@ -8,4 +8,4 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
-          event-type: repository-dispatch-event
+          event-type: repository_dispatch_event
