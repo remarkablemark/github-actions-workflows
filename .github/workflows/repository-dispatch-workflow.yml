@@ -7,4 +7,4 @@ jobs:
   repository-dispatch-workflow:
     runs-on: ubuntu-latest
     steps:
-    - run: echo Repository Dispatch Workflow
+      - run: echo Repository Dispatch Workflow
