@@ -1,0 +1,11 @@
+# https://github.com/marketplace/actions/repository-dispatch
+name: Repository Dispatch
+on: push
+jobs:
+  repository-dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          event-type: repository-dispatch-event
