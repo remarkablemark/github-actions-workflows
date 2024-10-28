@@ -1,0 +1,10 @@
+# https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#repository_dispatch
+name: Repository Dispatch Workflow
+on:
+  repository_dispatch:
+    types: [repository_dispatch_event]
+jobs:
+  repository-dispatch-workflow:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo Repository Dispatch Workflow
