@@ -1,0 +1,23 @@
+# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/control-the-concurrency-of-workflows-and-jobs
+name: concurrency
+on:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow_ref }} # ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  concurrency:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo concurrency
+
+# jobs:
+#   job-1:
+#     runs-on: ubuntu-latest
+#     concurrency:
+#       group: example-group
+#       cancel-in-progress: true
