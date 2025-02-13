@@ -51,8 +51,3 @@ jobs:
     runs-on: macos-13
     steps:
     - run: echo macos-13
-
-  macos-12:
-    runs-on: macos-12
-    steps:
-    - run: echo macos-12
