@@ -13,6 +13,3 @@ jobs:
       # https://docs.github.com/en/actions/advanced-guides/using-github-cli-in-workflows
       - name: gh
         run: gh help
-
-      - name: heroku
-        run: heroku help
