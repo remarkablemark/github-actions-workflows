@@ -7,10 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [10, 12, 14]
+        node: [18, 20, 22]
     steps:
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - run: node --version
+
+  collection:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        collection:
+          - name: 'one'
+            digit: 1
+          - name: 'two'
+            digit: 2
+    steps:
+      - run: echo ${{ matrix.collection.name }}, ${{ matrix.collection.digit }}
