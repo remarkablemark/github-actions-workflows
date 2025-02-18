@@ -26,3 +26,14 @@ jobs:
             digit: 2
     steps:
       - run: echo ${{ matrix.collection.name }}, ${{ matrix.collection.digit }}
+
+  array:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        array: [
+          { name: 'one', digit: 1 },
+          { name: 'two', digit: 2 },
+        ]
+    steps:
+      - run: echo ${{ matrix.array.name }}, ${{ matrix.array.digit }}
