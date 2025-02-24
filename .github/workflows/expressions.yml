@@ -55,13 +55,17 @@ jobs:
           hashFiles: hashFiles('**/package-lock.json')
 
       - name: sucess
-        run: echo ${{ success() }}
+        if: success()
+        run: echo success
 
       - name: always
-        run: echo ${{ always() }}
+        if: always()
+        run: echo always
 
       - name: cancelled
-        run: echo ${{ cancelled() }}
+        if: cancelled()
+        run: echo cancelled
 
       - name: failure
-        run: echo ${{ failure() }}
+        if: failure()
+        run: echo failure
