@@ -51,7 +51,7 @@ jobs:
           formatEscapingBraces: ${{ format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat') }} # '{Hello Mona the Octocat!}'
           join: ${{ join(github.event.issue.labels.*.name, ', ') }} # 'bug, help wanted'
           toJSON: ${{ toJSON(job) }} # { "status": "success" }
-          fromJSON: ${{ fromJSON('["push", "pull_request"]' }}
+          fromJSON: ${{ fromJSON('["push", "pull_request"]') }}
           hashFiles: ${{ hashFiles('**/package-lock.json') }}
 
       - name: success
