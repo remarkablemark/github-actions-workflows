@@ -32,7 +32,6 @@ jobs:
           MY_ENV_VAR: ${{ github.ref == 'refs/heads/master' && 'value_for_main_branch' || 'value_for_other_branches' }}
 
       - name: Functions
-        if: contains(fromJSON('["push", "pull_request"]'), github.event_name) # true
         run: |
           echo $contains
           echo $startsWith
@@ -51,7 +50,7 @@ jobs:
           formatEscapingBraces: ${{ format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat') }} # '{Hello Mona the Octocat!}'
           join: ${{ join(github.event.issue.labels.*.name, ', ') }} # 'bug, help wanted'
           toJSON: ${{ toJSON(job) }} # { "status": "success" }
-          fromJSON: ${{ fromJSON('["push", "pull_request"]') }}
+          fromJSON: ${{ contains(fromJSON('["push", "pull_request"]'), github.event_name) }} # true
           hashFiles: ${{ hashFiles('**/package-lock.json') }}
 
       - name: success
