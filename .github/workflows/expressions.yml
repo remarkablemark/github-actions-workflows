@@ -1,0 +1,47 @@
+# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions
+name: expressions
+on: push
+
+jobs:
+  expressions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Literals
+        env:
+          myNull: ${{ null }}
+          myBoolean: ${{ false }}
+          myIntegerNumber: ${{ 711 }}
+          myFloatNumber: ${{ -9.2 }}
+          myHexNumber: ${{ 0xff }}
+          myExponentialNumber: ${{ -2.99e-2 }}
+          myString: Mona the Octocat
+          myStringInBraces: ${{ 'It''s open source!' }}
+
+      - name: Operators
+        env:
+          MY_ENV_VAR: ${{ github.ref == 'refs/heads/master' && 'value_for_main_branch' || 'value_for_other_branches' }}
+
+      - name: Functions
+        if: contains(fromJSON('["push", "pull_request"]'), github.event_name) # true
+        env:
+          contains: contains('Hello world', 'llo') # true
+          startsWith: startsWith('Hello world', 'He') # true
+          endsWith: endsWith('Hello world', 'ld') # true
+          format: format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') # 'Hello Mona the Octocat'
+          formatEscapingBraces: format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat') # '{Hello Mona the Octocat!}'
+          join: join(github.event.issue.labels.*.name, ', ') # 'bug, help wanted'
+          toJSON: toJSON(job) # { "status": "success" }
+          fromJSON: fromJSON('["push", "pull_request"]'
+          hashFiles: hashFiles('**/package-lock.json')
+
+      - name: sucess
+        if: ${{ success() }}
+
+      - name: always
+        if: ${{ always() }}
+
+      - name: cancelled
+        if: ${{ cancelled() }}
+
+      - name: failure
+        if: ${{ failure() }}
