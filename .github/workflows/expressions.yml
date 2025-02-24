@@ -7,6 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Literals
+        run: |
+          echo $myNull
+          echo $myBoolean
+          echo $myIntegerNumber
+          echo $myFloatNumber
+          echo $myHexNumber
+          echo $myExponentialNumber
+          echo $myString
+          echo $myStringInBraces
         env:
           myNull: ${{ null }}
           myBoolean: ${{ false }}
@@ -18,11 +27,22 @@ jobs:
           myStringInBraces: ${{ 'It''s open source!' }}
 
       - name: Operators
+        run: echo $MY_ENV_VAR
         env:
           MY_ENV_VAR: ${{ github.ref == 'refs/heads/master' && 'value_for_main_branch' || 'value_for_other_branches' }}
 
       - name: Functions
         if: contains(fromJSON('["push", "pull_request"]'), github.event_name) # true
+        run: |
+          echo $contains
+          echo $startsWith
+          echo $endsWith
+          echo $format
+          echo $formatEscapingBraces
+          echo $join
+          echo $toJSON
+          echo $fromJSON
+          echo $hashFiles
         env:
           contains: contains('Hello world', 'llo') # true
           startsWith: startsWith('Hello world', 'He') # true
@@ -35,13 +55,13 @@ jobs:
           hashFiles: hashFiles('**/package-lock.json')
 
       - name: sucess
-        if: ${{ success() }}
+        run: echo ${{ success() }}
 
       - name: always
-        if: ${{ always() }}
+        run: echo ${{ always() }}
 
       - name: cancelled
-        if: ${{ cancelled() }}
+        run: echo ${{ cancelled() }}
 
       - name: failure
-        if: ${{ failure() }}
+        run: echo ${{ failure() }}
