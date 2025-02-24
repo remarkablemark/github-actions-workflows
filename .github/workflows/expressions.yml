@@ -44,17 +44,17 @@ jobs:
           echo $fromJSON
           echo $hashFiles
         env:
-          contains: contains('Hello world', 'llo') # true
-          startsWith: startsWith('Hello world', 'He') # true
-          endsWith: endsWith('Hello world', 'ld') # true
-          format: format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') # 'Hello Mona the Octocat'
-          formatEscapingBraces: format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat') # '{Hello Mona the Octocat!}'
-          join: join(github.event.issue.labels.*.name, ', ') # 'bug, help wanted'
-          toJSON: toJSON(job) # { "status": "success" }
-          fromJSON: fromJSON('["push", "pull_request"]'
-          hashFiles: hashFiles('**/package-lock.json')
+          contains: ${{ contains('Hello world', 'llo') }} # true
+          startsWith: ${{ startsWith('Hello world', 'He') }} # true
+          endsWith: ${{ endsWith('Hello world', 'ld') }} # true
+          format: ${{ format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') }} # 'Hello Mona the Octocat'
+          formatEscapingBraces: ${{ format('{{Hello {0} {1} {2}!}}', 'Mona', 'the', 'Octocat') }} # '{Hello Mona the Octocat!}'
+          join: ${{ join(github.event.issue.labels.*.name, ', ') }} # 'bug, help wanted'
+          toJSON: ${{ toJSON(job) }} # { "status": "success" }
+          fromJSON: ${{ fromJSON('["push", "pull_request"]' }}
+          hashFiles: ${{ hashFiles('**/package-lock.json') }}
 
-      - name: sucess
+      - name: success
         if: success()
         run: echo success
 
