@@ -1,0 +1,30 @@
+name: commands
+on: push
+
+jobs:
+  commands:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+    - name: cd
+      shell: bash
+      run: cd
+
+    - name: echo
+      shell: bash
+      run: echo hello
+
+    - name: find
+      shell: bash
+      run: find
+
+    - name: ls
+      shell: bash
+      run: ls
+
+    - name: zip
+      shell: bash
+      run: zip --help
