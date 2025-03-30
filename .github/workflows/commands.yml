@@ -26,10 +26,10 @@ jobs:
       run: ls
 
     - name: zip
-      shell: bash
-      run: |
-        if [[ '${{ matrix.os }}' == 'windows'* ]]; then
-          Compress-Archive
-        else
-          zip
-        fi
+      if: matrix.os != 'windows'
+      run: zip
+
+    - name: zip
+      if: matrix.os == 'windows'
+      run: Compress-Archive
+      # shell: powershell
