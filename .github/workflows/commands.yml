@@ -31,6 +31,12 @@ jobs:
         touch foo
         mv foo bar
 
+    - name: source
+      shell: bash
+      run: |
+        python -m venv .venv
+        source .venv/bin/activate
+
     - name: zip
       if: matrix.os != 'windows-latest'
       run: |
