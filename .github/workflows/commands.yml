@@ -31,6 +31,12 @@ jobs:
         touch foo
         mv foo bar
 
+    - name: sed
+      shell: bash
+      run: |
+        echo hello > file.txt
+        sed 's/h/j/' file.txt
+
     - name: source
       shell: bash
       run: |
