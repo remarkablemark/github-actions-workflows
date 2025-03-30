@@ -25,6 +25,12 @@ jobs:
       shell: bash
       run: ls
 
+    - name: mv
+      shell: bash
+      run: |
+        touch foo
+        mv foo bar
+
     - name: zip
       if: matrix.os != 'windows-latest'
       run: |
