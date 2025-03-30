@@ -28,7 +28,7 @@ jobs:
     - name: zip
       shell: bash
       run: |
-        if [[ ${{ matrix.os == 'windows'* }} ]]; then
+        if [[ ${{ matrix.os }} == 'windows'* }} ]]; then
           Compress-Archive
         else
           zip
