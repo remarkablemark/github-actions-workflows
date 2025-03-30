@@ -1,0 +1,12 @@
+name: uuid
+on: push
+
+jobs:
+  uuid:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Generate UUID
+      run: echo "UUID=$(uuidgen)" >> $GITHUB_ENV
+
+    - name: Print UUID
+      run: echo $UUID # ${{ env.UUID }}
