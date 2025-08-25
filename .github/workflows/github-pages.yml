@@ -39,7 +39,7 @@ jobs:
         run: npx marked --input README.md --output index.html
 
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           # Upload entire repository
           path: '.'
