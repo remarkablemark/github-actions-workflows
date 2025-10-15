@@ -13,7 +13,7 @@ jobs:
   setup-node:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
       - run: node --version
       - run: npm --version
       - run: npx --version
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use Node.js 12
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 12
       - run: node --version
@@ -40,7 +40,7 @@ jobs:
         run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
       - name: Use Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
       - run: node --version
