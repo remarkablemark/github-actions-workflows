@@ -75,7 +75,7 @@ jobs:
 
     # https://cli.github.com/manual/gh_pr_comment
     - name: Checkout
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
     - name: Add comment to PR
       run: gh pr comment ${{ github.event.number }} --body '[Hi from GitHub CLI](https://cli.github.com/manual/gh_pr_comment)'
       env:
