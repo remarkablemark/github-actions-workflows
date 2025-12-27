@@ -28,18 +28,21 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: ${{ runner.os }}
+        shell: bash
         run: echo $RUNNER_OS
 
   windows-2025:
     runs-on: windows-2025
     steps:
       - name: ${{ runner.os }}
+        shell: bash
         run: echo $RUNNER_OS
 
   windows-2022:
     runs-on: windows-2022
     steps:
       - name: ${{ runner.os }}
+        shell: bash
         run: echo $RUNNER_OS
 
   # macOS
