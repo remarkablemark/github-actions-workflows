@@ -1,5 +1,5 @@
 # https://github.com/actions/runner-images
-# https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+# https://docs.github.com/en/actions/concepts/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories
 name: runners
 on: push
 
@@ -8,46 +8,46 @@ jobs:
   ubuntu-latest:
     runs-on: ubuntu-latest
     steps:
-    - run: echo ubuntu-latest
+      - run: echo $RUNNER_OS # ${{ runner.os }}
+
+  ubuntu-24-04:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo $RUNNER_OS # ${{ runner.os }}
 
   ubuntu-22-04:
     runs-on: ubuntu-22.04
     steps:
-    - run: echo ubuntu-22.04
-
-  ubuntu-20-04:
-    runs-on: ubuntu-20.04
-    steps:
-    - run: echo ubuntu-20.04
+      - run: echo $RUNNER_OS # ${{ runner.os }}
 
   # Windows
   windows-latest:
     runs-on: windows-latest
     steps:
-    - run: echo windows-latest
+      - run: echo $RUNNER_OS # ${{ runner.os }}
+
+  windows-2025:
+    runs-on: windows-2025
+    steps:
+      - run: echo $RUNNER_OS # ${{ runner.os }}
 
   windows-2022:
     runs-on: windows-2022
     steps:
-    - run: echo windows-2022
-
-  windows-2019:
-    runs-on: windows-2019
-    steps:
-    - run: echo windows-2019
+      - run: echo $RUNNER_OS # ${{ runner.os }}
 
   # macOS
   macos-latest:
     runs-on: macos-latest
     steps:
-    - run: echo macos-latest
+      - run: echo $RUNNER_OS # ${{ runner.os }}
+
+  macos-15:
+    runs-on: macos-15
+    steps:
+      - run: echo $RUNNER_OS # ${{ runner.os }}
 
   macos-14:
     runs-on: macos-14
     steps:
-    - run: echo macos-14
-
-  macos-13:
-    runs-on: macos-13
-    steps:
-    - run: echo macos-13
+      - run: echo $RUNNER_OS # ${{ runner.os }}
