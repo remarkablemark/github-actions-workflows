@@ -8,46 +8,55 @@ jobs:
   ubuntu-latest:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $RUNNER_OS # ${{ runner.os }}
+      - name: ${{ runner.os }}
+        run: echo $RUNNER_OS
 
   ubuntu-24-04:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo $RUNNER_OS # ${{ runner.os }}
+      - name: ${{ runner.os }}
+        run: echo $RUNNER_OS
 
   ubuntu-22-04:
     runs-on: ubuntu-22.04
     steps:
-      - run: echo $RUNNER_OS # ${{ runner.os }}
+      - name: ${{ runner.os }}
+        run: echo $RUNNER_OS
 
   # Windows
   windows-latest:
     runs-on: windows-latest
     steps:
-      - run: echo $RUNNER_OS # ${{ runner.os }}
+      - name: ${{ runner.os }}
+        run: echo $RUNNER_OS
 
   windows-2025:
     runs-on: windows-2025
     steps:
-      - run: echo $RUNNER_OS # ${{ runner.os }}
+      - name: ${{ runner.os }}
+        run: echo $RUNNER_OS
 
   windows-2022:
     runs-on: windows-2022
     steps:
-      - run: echo $RUNNER_OS # ${{ runner.os }}
+      - name: ${{ runner.os }}
+        run: echo $RUNNER_OS
 
   # macOS
   macos-latest:
     runs-on: macos-latest
     steps:
-      - run: echo $RUNNER_OS # ${{ runner.os }}
+      - name: ${{ runner.os }}
+        run: echo $RUNNER_OS
 
   macos-15:
     runs-on: macos-15
     steps:
-      - run: echo $RUNNER_OS # ${{ runner.os }}
+      - name: ${{ runner.os }}
+        run: echo $RUNNER_OS
 
   macos-14:
     runs-on: macos-14
     steps:
-      - run: echo $RUNNER_OS # ${{ runner.os }}
+      - name: ${{ runner.os }}
+        run: echo $RUNNER_OS
