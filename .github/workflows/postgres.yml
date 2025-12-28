@@ -88,7 +88,7 @@ jobs:
 
       - name: Alter max connections
         run: |
-          POSTGRESQL_CONF=$(sudo find /var/lib/postgresql -name postgresql.conf)
+          POSTGRESQL_CONF=$(psql -c 'SHOW config_file;')
           docker exec -i postgres bash << EOF
             sed -i -e 's/max_connections = 100/max_connections = 1000/' $POSTGRESQL_CONF
             sed -i -e 's/shared_buffers = 128MB/shared_buffers = 2GB/' $POSTGRESQL_CONF
