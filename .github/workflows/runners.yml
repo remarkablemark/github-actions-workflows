@@ -56,10 +56,10 @@ jobs:
     runs-on: macos-15
     steps:
       - name: ${{ runner.os }}
-        run: echo $RUNNER_OS
+        run: echo $RUNNER_OS | tr '[:upper:]' '[:lower:]'
 
   macos-14:
     runs-on: macos-14
     steps:
       - name: ${{ runner.os }}
-        run: echo $RUNNER_OS
+        run: echo $RUNNER_OS | tr '[:upper:]' '[:lower:]'
