@@ -54,6 +54,7 @@
 | [uuid](.github/workflows/uuid.yml) | [![shell](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/uuid.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/uuid.yml) |
 | [Workflow Dispatch](.github/workflows/workflow-dispatch.yml) | [![Workflow Dispatch](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/workflow-dispatch.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/workflow-dispatch.yml) |
 | [Workflow Dispatch Trigger](.github/workflows/workflow-dispatch-trigger.yml) | [![Workflow Dispatch Trigger](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/workflow-dispatch-trigger.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/workflow-dispatch-trigger.yml) |
+| [zip](.github/workflows/zip.yml) | [![zip](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/zip.yml/badge.svg)](https://github.com/remarkablemark/github-actions-workflows/actions/workflows/zip.yml) |
 
 <!-- prettier-ignore-end -->
 
