@@ -1,0 +1,25 @@
+name: zip
+on: push
+
+jobs:
+  zip:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      - name: zip
+        shell: bash
+        run: |
+          if [[ $RUNNER_OS == 'Windows' ]]; then
+            7z a -r archive.zip ./*
+          else
+            zip -r archive.zip .
+          fi
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ runner.os }}
+          path: archive.zip
