@@ -13,6 +13,7 @@ on:
         - cschleiden
       use-emoji:
         type: boolean
+        default: false
         description: Include 🎉🤣 emojis
 
 jobs:
@@ -20,6 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Send greeting
-      run: echo $MESSAGE ${{ toJSON(inputs.name) }} ${{ fromJSON('["", "🥳"]')[+inputs.use-emoji] }}
+      run: echo $MESSAGE ${{ toJSON(inputs.name) }} ${{ fromJSON('{"true":"🥳","false":""}')[inputs.use-emoji] }}
       env:
         MESSAGE: ${{ inputs.message }}
