@@ -20,6 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Send greeting
-      run: echo "${{ toJSON(inputs.message) }} $NAME ${{ fromJSON('["", "🥳"]')[inputs.use-emoji == 'true'] }}"
+      run: echo $MESSAGE ${{ toJSON(inputs.name) }} ${{ fromJSON('["", "🥳"]')[inputs.use-emoji == 'true'] }}
       env:
-        NAME: ${{ inputs.name }}
+        MESSAGE: ${{ inputs.message }}
