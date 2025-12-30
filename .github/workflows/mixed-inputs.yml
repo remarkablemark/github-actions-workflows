@@ -1,17 +1,16 @@
 # https://github.blog/changelog/2021-11-10-github-actions-input-types-for-manual-workflows/
 name: Mixed inputs
-
 on:
   workflow_dispatch:
     inputs:
+      message:
+        required: true
       name:
         type: choice
         description: Who to greet
         options: 
         - monalisa
         - cschleiden
-      message:
-        required: true
       use-emoji:
         type: boolean
         description: Include 🎉🤣 emojis
@@ -19,7 +18,8 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
-
     steps:
     - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+      run: echo "${{ toJSON(inputs.message) }} $NAME ${{ fromJSON('["", "🥳"]')[inputs.use-emoji == 'true'] }}"
+      env:
+        NAME: ${{ inputs.name }}
