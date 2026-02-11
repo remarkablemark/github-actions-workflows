@@ -1,22 +1,23 @@
 name: Auto Approve
-on: [push, pull_request_target]
+on: pull_request
+
+permissions:
+  pull-requests: write
 
 jobs:
   auto-approve:
-    if: github.event_name == 'pull_request_target'
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
+    timeout-minutes: 1
 
     steps:
-      - name: Approve Dependabot PR
-        if: github.actor == 'dependabot[bot]'
-        run: gh pr review --approve $PR_URL
+      - name: Approve PR
+        run: gh pr review --approve ${{ github.event.pull_request.html_url }}
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ github.token }} # or `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}`
 
       # https://github.com/hmarr/auto-approve-action
       - name: Auto Approve
         uses: hmarr/auto-approve-action@v4
-        if: github.actor == 'dependabot[bot]'
         with:
           github-token: ${{ github.token }}
